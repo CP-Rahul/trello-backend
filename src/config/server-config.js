@@ -3,5 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
-    PORT: process.env.PORT
+    PORT: process.env.PORT,
+    MONGOURL: process.env.MONGOURL,
+    SALT: process.env.SALT
 }
