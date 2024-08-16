@@ -17,7 +17,6 @@ class CrudRepository{
     }
 
     async get(id) {
-        id = new mongoose.Types.ObjectId(id)
         const response = await this.model.findById(id);
         return response;
     }

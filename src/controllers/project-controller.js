@@ -11,11 +11,26 @@ async function createProject(req, res) {
     SuccessResponse.data = user;
     return res.status(201).json(SuccessResponse);
   } catch (error) {
+    console.log(error)
+    ErrorResponse.error = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+
+async function getProjectsById(req, res) {
+  try {
+    const project = await ProjectService.getProjectsById({
+        id: req.params.id,
+    });
+    SuccessResponse.data = project;
+    return res.status(201).json(SuccessResponse);
+  } catch (error) {
     ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
 }
 
 module.exports = {
-  createProject
+  createProject,
+  getProjectsById
 };

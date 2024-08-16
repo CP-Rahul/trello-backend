@@ -28,6 +28,16 @@ class UserRepository extends CrudRepository{
           throw error;
         }
     }
+
+    async getTasksByProjectId(id) {
+      try {
+        const response = await task.find({ projectId: id });
+        return response;
+      } catch (error) {
+        console.log(error)
+        throw error;
+      }
+    }
 }
 
 module.exports = UserRepository;
