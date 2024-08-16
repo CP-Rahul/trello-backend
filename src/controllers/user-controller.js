@@ -16,6 +16,22 @@ async function register(req, res) {
   }
 }
 
+async function login(req, res) {
+  try {
+    const user = await UserService.login({
+      email: req.body.email,
+      password: req.body.password,
+    });
+    SuccessResponse.data = user;
+    return res.status(200).json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.error = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+
+
 module.exports = {
   register,
+  login
 };

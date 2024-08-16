@@ -9,4 +9,8 @@ router.post('/register',
         AuthMiddlewares.validateCreateRequest,
         UserController.register); 
 
+router.post('/login', 
+        AuthMiddlewares.validateCreateRequest,
+        UserController.login); 
+
 module.exports = router;
