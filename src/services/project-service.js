@@ -25,9 +25,13 @@ async function getAllprojects() {
 async function getProjectsById(data) {
   try {
     const project = await projectRepository.get(data.id);
+    if(!project) {
+      throw new AppError("Project with given id is not exists", 400);
+    }
     project.tasks = await taskRepository.getTasksByProjectId(data.id);
     return project;
   } catch (error) {
+    if(error instanceof AppError) throw error;
     throw new AppError("Something went wrong while fetching project", 500);
   }
 }
