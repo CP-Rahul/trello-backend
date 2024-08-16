@@ -60,7 +60,9 @@ Lets take a look inside the `src` folder
 
 ### Api End Points
 
-- ` http://localhost:3000/api/v1/user/register`
+- Note: For accessing protected routes, set x-access-token as the JWT token in the header.
+
+- POST -> ` http://localhost:3000/api/v1/user/register`
 
 #### Examples
 
@@ -70,11 +72,9 @@ Case 1: If all requirements are fulfilled :
 
   ```
   {
-  {
   "name": "Joe",
   "email": "joedoe@example.com",
   "password": "123456"
-  }
   }
 
   ```
@@ -127,17 +127,17 @@ Case 3: If user already exists:
 - Request Body
 
 ```
-{
+ {
   "name": "Joe",
   "email": "joedoe@example.com",
   "password": "123456"
-}
+ }
 ```
 
 - Response
 
 ```
-{
+ { 
     "success": false,
     "msg": "Something went wrong",
     "data": {},
@@ -145,10 +145,10 @@ Case 3: If user already exists:
         "explanation": "User already exixts",
         "statusCode": 400
     }
-}
+ }
 ```
 
-- ` http://localhost:3000/api/v1/user/login`
+- POST -> ` http://localhost:3000/api/v1/user/login`
 
 #### Examples
 
@@ -158,10 +158,8 @@ Case 1: If all requirements are fulfilled :
 
   ```
   {
-  {
   "email": "joedoe@example.com",
   "password": "123456"
-  }
   }
 
   ```
@@ -205,17 +203,17 @@ Case 3: If user not exists:
 - Request Body
 
 ```
-{
+ {
   "name": "Joe",
   "email": "joee@example.com",
   "password": "123456"
-}
+ }
 ```
 
 - Response
 
 ```
-{
+ {
     "success": false,
     "msg": "Something went wrong",
     "data": {},
@@ -223,10 +221,10 @@ Case 3: If user not exists:
         "explanation": "User not exixts",
         "statusCode": 400
     }
-}
+ }
 ```
 
-- `http://localhost:3000/api/v1/project`
+- POST -> `http://localhost:3000/api/v1/project`
 
 #### Examples
 
@@ -286,7 +284,7 @@ Case 2: If parameters are missing in the request:
   }
   ```
 
-- `http://localhost:3000/api/v1/project`
+- GET -> `http://localhost:3000/api/v1/project`
 
 #### Examples
 
@@ -361,7 +359,7 @@ Case 2: If user is not authenticated:
     }
   }
   ```
-- `http://localhost:3000/api/v1/project/id`
+- GET -> `http://localhost:3000/api/v1/project/id`
 
 #### Examples
 
@@ -397,7 +395,7 @@ Case 1: If all requirements are fulfilled :
   }
   ```
 
-  - `http://localhost:3000/api/v1/task`
+- POST -> `http://localhost:3000/api/v1/task`
 
 #### Examples
 
@@ -406,7 +404,7 @@ Case 1: If all requirements are fulfilled :
 - Request Body
 
 ```
-{
+ {
   "name": "Task 5",
   "description": "Create the initial design for the landing page including the header, footer, and main sections.",
   "status": "Done",
@@ -414,7 +412,7 @@ Case 1: If all requirements are fulfilled :
   "dueDate": "2024-08-25T00:00:00.000Z",
   "assignedUserId": "66bef1928dac55073a8f8936",
   "projectId": "66bf4ce4945fbb3b91514b37"
-}
+ }
 ```
 
 - Response
@@ -437,7 +435,7 @@ Case 1: If all requirements are fulfilled :
   - Request Body
 
 ```
-{
+ {
   "name": "Task 5",
   "description": "Create the initial design for the landing page including the header, footer, and main sections.",
   "status": "Done",
@@ -445,7 +443,7 @@ Case 1: If all requirements are fulfilled :
   "dueDate": "2024-08-25T00:00:00.000Z",
   "assignedUserId": "66bef1928dac55073a8f8936",
   "projectId": "66bf4ce4945fbb3b91514b37"
-}
+ }
 ```
 
 - Response
@@ -460,7 +458,7 @@ Case 1: If all requirements are fulfilled :
     }
   }
   ```
-  - `http://localhost:3000/api/v1/task`
+  - GET -> `http://localhost:3000/api/v1/task`
 
 #### Examples
 
