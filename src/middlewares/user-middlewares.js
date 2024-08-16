@@ -34,7 +34,7 @@ async function checkAuth(req, res, next) {
     } catch (error) {
         ErrorResponse.error = error;
         return res
-                .status(error.statusCode)
+                .status(400)
                 .json(ErrorResponse);
     }
 }
