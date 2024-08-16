@@ -24,6 +24,22 @@ function validateCreateRequest(req, res, next) {
     next();
 }
 
+function validateLoginRequest(req, res, next) {
+    if(!req.body.email) {
+        ErrorResponse.message = new AppError('email is not found in the request body', 400);
+        return res
+                .status(400)
+                .json(ErrorResponse)
+    }
+    if(!req.body.password) {
+        ErrorResponse.message = new AppError('password is not found in the request body', 400);
+        return res
+                .status(400)
+                .json(ErrorResponse)
+    }
+    next();
+}
+
 async function checkAuth(req, res, next) {
     try {
         const response = await UserService.isAuthenticated(req.headers['x-access-token']);
@@ -41,5 +57,6 @@ async function checkAuth(req, res, next) {
 
  module.exports = {
     validateCreateRequest,
+    validateLoginRequest,
     checkAuth
  }

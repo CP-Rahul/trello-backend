@@ -10,7 +10,7 @@ router.post('/register',
         UserController.register); 
 
 router.post('/login', 
-        AuthMiddlewares.validateCreateRequest,
+        AuthMiddlewares.validateLoginRequest,
         UserController.login); 
 
 module.exports = router;
