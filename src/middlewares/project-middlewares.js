@@ -1,6 +1,5 @@
 const { ErrorResponse } = require('../utils/common');
 const AppError = require('../utils/error/app-error');
-const { UserService } = require('../services');
 
 function validateCreateRequest(req, res, next) {
     if(!req.body.name) {

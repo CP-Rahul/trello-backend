@@ -1,12 +1,16 @@
-const { ProjectService } = require("../services");
+const { TaskService } = require("../services");
 const { SuccessResponse, ErrorResponse } = require("../utils/common");
 
-async function createProject(req, res) {
+async function createTask(req, res) {
   try {
-    const user = await ProjectService.createProject({
+    const user = await TaskService.createTask({
         name: req.body.name,
         description: req.body.description,
-        userId: req.user
+        status: req.body.status,
+        tags: req.body.tags,
+        dueDate: req.body.dueDate,
+        assignedUserId: req.body.assignedUserId,
+        projectId: req.body.projectId,
     });
     SuccessResponse.data = user;
     return res.status(201).json(SuccessResponse);
@@ -17,5 +21,5 @@ async function createProject(req, res) {
 }
 
 module.exports = {
-  createProject
+  createTask
 };
