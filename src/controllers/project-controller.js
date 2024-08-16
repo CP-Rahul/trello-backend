@@ -11,7 +11,17 @@ async function createProject(req, res) {
     SuccessResponse.data = user;
     return res.status(201).json(SuccessResponse);
   } catch (error) {
-    console.log(error)
+    ErrorResponse.error = error;
+    return res.status(error.statusCode).json(ErrorResponse);
+  }
+}
+
+async function getAllprojects(req, res) {
+  try {
+    const project = await ProjectService.getAllprojects();
+    SuccessResponse.data = project;
+    return res.status(200).json(SuccessResponse);
+  } catch (error) {
     ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }
@@ -23,7 +33,7 @@ async function getProjectsById(req, res) {
         id: req.params.id,
     });
     SuccessResponse.data = project;
-    return res.status(201).json(SuccessResponse);
+    return res.status(200).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
@@ -32,5 +42,6 @@ async function getProjectsById(req, res) {
 
 module.exports = {
   createProject,
-  getProjectsById
+  getAllprojects,
+  getProjectsById,
 };

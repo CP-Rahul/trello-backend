@@ -10,6 +10,11 @@ router.post('/',
         AuthMiddlewares.checkAuth,
         ProjectController.createProject); 
 
+router.get('/', 
+        AuthMiddlewares.checkAuth,
+        ProjectController.getAllprojects);     
+
+
 router.get('/:id', 
             AuthMiddlewares.checkAuth,
             ProjectController.getProjectsById);     

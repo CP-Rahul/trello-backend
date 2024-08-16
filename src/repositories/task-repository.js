@@ -34,7 +34,6 @@ class UserRepository extends CrudRepository{
         const response = await task.find({ projectId: id });
         return response;
       } catch (error) {
-        console.log(error)
         throw error;
       }
     }

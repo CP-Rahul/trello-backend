@@ -13,17 +13,27 @@ async function createProject(data) {
   }
 }
 
+async function getAllprojects() {
+  try {
+    const project = await projectRepository.getAll();
+    return project;
+  } catch (error) {
+    throw new AppError("Something went wrong while fetching all projects", 500);
+  }
+}
+
 async function getProjectsById(data) {
   try {
     const project = await projectRepository.get(data.id);
     project.tasks = await taskRepository.getTasksByProjectId(data.id);
     return project;
   } catch (error) {
-    throw new AppError("Something went wrong while creating project", 500);
+    throw new AppError("Something went wrong while fetching project", 500);
   }
 }
 
 module.exports = {
-    createProject  ,
+    createProject ,
+    getAllprojects,
     getProjectsById
 };
