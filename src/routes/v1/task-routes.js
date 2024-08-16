@@ -9,6 +9,11 @@ router.post('/',
         TaskMiddlewares.validateCreateRequest,
         AuthMiddlewares.checkAuth,
         TaskController.createTask
-        ); 
+); 
 
+router.get('/', 
+        AuthMiddlewares.checkAuth,
+        TaskController.getTasksGroupedByStatus
+); 
+        
 module.exports = router;

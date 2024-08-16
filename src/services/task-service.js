@@ -18,12 +18,22 @@ async function createTask(data) {
     const task = await taskRepository.create(data);
     return task;
   } catch (error) {
-  
     if(error instanceof AppError) throw error;
     throw new AppError("Something went wrong while creating task", 500);
   }
 }
 
+async function getTasksGroupedByStatus() {
+  try {
+    const tasks = await taskRepository.getTasksGroupedByStatus();
+    return tasks;
+  } catch (error) {
+    throw new AppError("Something went wrong while getting tasks", 500);
+  }
+}
+
+
 module.exports = {
-    createTask 
+    createTask ,
+    getTasksGroupedByStatus
 };
